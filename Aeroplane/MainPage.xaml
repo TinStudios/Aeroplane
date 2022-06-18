@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     control:BackdropMaterial.ApplyToRootOrPageBackground="True">
     <Grid>
-        <control:TabView x:Name="browserTabs" AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabCloseRequested" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <control:TabView x:Name="browserTabs" AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabCloseRequested" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanDragTabs="True">
             <control:TabView.TabStripHeader>
                 <Grid x:Name="ShellTitlebarInset" Background="Transparent" />
             </control:TabView.TabStripHeader>

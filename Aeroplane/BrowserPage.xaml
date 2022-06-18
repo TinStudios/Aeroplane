@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Aeroplane.WebViewPage"
+    x:Class="Aeroplane.BrowserPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Aeroplane"
@@ -106,9 +106,62 @@
             <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE72A;" Click="Button_Click_1" x:Name="forwardButton" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
             <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE711;" Click="Button_Click_2" x:Name="reloadButton" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
             <TextBox x:Name="addressBar" KeyDown="TextBox_KeyDown" Grid.Column="3" Grid.RowSpan="2" />
-            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE728;" Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
-            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" Grid.Column="5" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
-            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE712;" Grid.Column="6" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
+            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE728;" Click="Button_Click_3" Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
+            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" Click="Button_Click_4" Grid.Column="5" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2" />
+            <Button Style="{StaticResource ButtonStyle1}" BorderThickness="0, 1, 0, 1" FontFamily="Segoe MDL2 Assets" Content="&#xE712;" Click="Button_Click_5" Grid.Column="6" VerticalAlignment="Stretch" HorizontalAlignment="Center" Grid.RowSpan="2">
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="New Tab" Click="MenuFlyoutItem_Click">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE710;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="New Window" Click="MenuFlyoutItem_Click_1">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xF407;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="Bookmarks" Click="MenuFlyoutItem_Click_2">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE728;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="History" Click="MenuFlyoutItem_Click_3">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE81C;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Downloads" Click="MenuFlyoutItem_Click_4">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE896;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="Print" Click="MenuFlyoutItem_Click_5">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE749;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Find on Page" Click="MenuFlyoutItem_Click_6">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE721;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="Settings" Click="MenuFlyoutItem_Click_7">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE713;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="About" Click="MenuFlyoutItem_Click_8">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE946;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+            </Button>
         </Grid>
         <control:WebView2 x:Name="webView" Source="https://bing.com" Grid.Row="1" />
     </Grid>

@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Core;
 using control = Microsoft.UI.Xaml.Controls;
@@ -19,6 +9,26 @@ using control = Microsoft.UI.Xaml.Controls;
 
 namespace Aeroplane
 {
+
+    interface IPasser
+    {
+        control.TabViewItem Tab { get; set; }
+        Action Function { get; set; }
+    }
+
+    class Passer : IPasser
+    {
+        public Passer(control.TabViewItem tab, Action function)
+        {
+            Tab = tab;
+            Function = function;
+        }
+
+        public control.TabViewItem Tab { get; set; }
+
+        public Action Function { get; set; }
+    }
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -33,7 +43,10 @@ namespace Aeroplane
             coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
 
             Window.Current.SetTitleBar(CustomDragRegion);
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
             NewTab(browserTabs);
         }
 
@@ -63,19 +76,24 @@ namespace Aeroplane
         private void TabView_TabCloseRequested(control.TabView sender, control.TabViewTabCloseRequestedEventArgs args)
         {
             sender.TabItems.Remove(args.Tab);
-            if(sender.TabItems.Count < 1) {
+            if (sender.TabItems.Count < 1)
+            {
                 NewTab(sender);
             }
         }
 
-        private void NewTab(control.TabView sender) {
-            var newTab = new control.TabViewItem();
+        private async void NewTab(control.TabView sender)
+        {
+            control.TabViewItem newTab = new control.TabViewItem();
             newTab.IconSource = new control.SymbolIconSource() { Symbol = Symbol.Document };
             newTab.Header = "New Tab";
 
+            // Join arguments
+            IPasser passer = new Passer(newTab, () => NewTab(sender));
+
             // The Content of a TabViewItem is often a frame which hosts a page.
             Frame frame = new Frame();
-            frame.Navigate(typeof(WebViewPage), newTab);
+            frame.Navigate(typeof(BrowserPage), passer);
             newTab.Content = frame;
 
             sender.TabItems.Add(newTab);
