@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Aeroplane.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Aeroplane"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:control="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    control:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    <Grid>
+        <control:TabView x:Name="browserTabs" AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabCloseRequested" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <control:TabView.TabStripHeader>
+                <Grid x:Name="ShellTitlebarInset" Background="Transparent" />
+            </control:TabView.TabStripHeader>
+            <control:TabView.TabStripFooter>
+                <Grid x:Name="CustomDragRegion" Background="Transparent" />
+            </control:TabView.TabStripFooter>
+        </control:TabView>
+    </Grid>
+</Page>
